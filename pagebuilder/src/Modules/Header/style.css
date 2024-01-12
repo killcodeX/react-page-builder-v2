@@ -1,0 +1,31 @@
+/* Header Component*/
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0rem;
+    left: 0rem;
+    right: 0rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    z-index: 800;
+    font-size: 16px;
+    line-height: 24px;
+    height: 4rem;
+    background: #fff;
+    border-bottom: 1px solid #f2f2f5;
+    box-shadow: 0 -6px 10px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .header-left-side {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  
+  .right-left-side {
+    display: flex;
+    gap: 8px;
+  }
