@@ -23,7 +23,14 @@ function ComponentCards({item}){
         collect: monitor => ({
           isDragging: !!monitor.isDragging(),
         }),
-      }))
+        end: (item, monitor) => {
+            const dropResult = monitor.getDropResult()
+            if (item && dropResult) {
+              alert(`You dropped ${item.name} into ${dropResult.name}!`)
+            }
+        }
+    }))
+
     return(
         <div className='component-card-container' ref={drag}>
             <div className='left-side-component-card-container'>
