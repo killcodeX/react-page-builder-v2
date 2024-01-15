@@ -2,6 +2,7 @@ import React from "react";
 import "./style.css";
 import { Col, Row } from "antd";
 import ComponentList from '../../Components/ComponentLists';
+import BuilderResolver from "../../Resolver/BuilderResolver";
 
 const style = {
   background: '#0092ff',
@@ -16,7 +17,7 @@ export default function PageBuilder() {
           <ComponentList/>
         </Col>
         <Col span={18} style={{background:"#f8fafc"}}>
-          <div style={style}>col-6</div>
+          <BuilderResolver/>
         </Col>
       </Row>
     </section>

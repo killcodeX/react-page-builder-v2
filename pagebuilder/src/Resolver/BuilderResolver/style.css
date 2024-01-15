@@ -1,0 +1,17 @@
+.builder-resolver{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    width: 100%;
+}
+
+.drag-drop-empty-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    height: 200px;
+    border: 2px dashed #dfdfdf;
+    border-radius: 10px;
+}
