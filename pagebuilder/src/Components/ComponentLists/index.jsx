@@ -1,11 +1,37 @@
-import React from 'react'
+import React from 'react';
+import { components } from "./list"
+import "./style.css";
+import { useDrag } from 'react-dnd';
+import { HolderOutlined } from '@ant-design/icons';
+
 
 export default function ComponentList() {
     return (
         <div className='component-list'>
             <div className='component-list-header'>Components</div>
             <div className='component-list-column'>
-                {/* {components.map(item => <Component key={item.id} handleComponentAdd={handleComponentAdd} item={item}/>)} */}
+                {components.map(item => <ComponentCards item={item} />)}
+            </div>
+        </div>
+    )
+}
+
+function ComponentCards({item}){
+    const [{isDragging}, drag] = useDrag(() => ({
+        type: item.component,
+        item: item,
+        collect: monitor => ({
+          isDragging: !!monitor.isDragging(),
+        }),
+      }))
+    return(
+        <div className='component-card-container' ref={drag}>
+            <div className='left-side-component-card-container'>
+                <div className='component-card-ontainer-icon'>{item.icon}</div>
+                <div className='component-card-container-label'>{item.label}</div>
+            </div>
+            <div className='right-side-component-card-container'>
+            <HolderOutlined />
             </div>
         </div>
     )

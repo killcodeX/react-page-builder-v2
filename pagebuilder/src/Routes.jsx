@@ -6,11 +6,11 @@ import JSONGenerator from "./Modules/JsonGenerator";
 const Router = () => {
   return (
     <Routes>
-        <Route path="/" element={<PageBuilder/>} />
-        <Route path="/preview" element={<Preview/>} />
-        <Route path="/json-generator" element={<JSONGenerator/>} />
-      </Routes>
-  )
-}
+      <Route path="/" element={<PageBuilder />} />
+      <Route path="/preview" element={<Preview />} />
+      <Route path="/json-generator" element={<JSONGenerator />} />
+    </Routes>
+  );
+};
 
 export default Router;

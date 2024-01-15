@@ -4,6 +4,7 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Header from "./Modules/Header";
 import "./App.css";
+import Router from "./Routes";
 
 function App() {
   const { defaultAlgorithm, darkAlgorithm } = theme;
@@ -16,6 +17,7 @@ function App() {
         }}
       >
         <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode}/>
+        <Router />
       </ConfigProvider>
     </DndProvider>
   );
