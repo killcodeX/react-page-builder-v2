@@ -12,7 +12,7 @@ const style = {
 export default function PageBuilder() {
   return (
     <section className="page-builder">
-      <Row gutter={48}>
+      <Row>
         <Col span={6}>
           <ComponentList/>
         </Col>
