@@ -8,7 +8,6 @@ import {
   
   
   export const addSection = (section) => {
-    console.log(section)
     return {
       type: AddSections,
       payload: section,

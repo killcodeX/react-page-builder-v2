@@ -1,9 +1,10 @@
 import react, { useState, useEffect } from "react";
 import "./style.css";
 import { useDrop } from 'react-dnd'
-import { Button, Empty } from "antd";
+import { Empty } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { addSection } from "../../Redux/Actions/actions";
+import Resolver from "./resolver";
 import EmptyStateImg from "../../Assets/emptystateimg.svg";
 
 export default function BuilderResolver() {
@@ -20,15 +21,18 @@ export default function BuilderResolver() {
     drop: (item) => {
         dispatch(addSection(item))
     },
+    canDrop: (item) => item.component === 'section',
     collect: (monitor) => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),
     }),
   }))
 
+//   console.log(canDrop, isOver)
+
   if (layers.length == 0) {
     return (
-      <section className="builder-resolver">
+      <section className="builder-resolver empty">
         <div className="drag-drop-empty-container" ref={drop}>
           <Empty
             image={EmptyStateImg}
@@ -39,5 +43,11 @@ export default function BuilderResolver() {
     );
   }
 
-  return <section className="builder-resolver">BuilderResolver</section>;
+  return <section className="builder-resolver">
+    {
+        layers.map(component => {
+            return <Resolver key={component.id} component={component}/>
+        })
+    }
+  </section>;
 }

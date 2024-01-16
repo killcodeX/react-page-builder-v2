@@ -1,7 +1,10 @@
-import React from 'react'
+import React from 'react';
+import {Layers} from './layers';
 
-export default function Resolver() {
+export default function Resolver({component}) {
   return (
-    <div>Resolver</div>
+    <div className='page-builder-component-resolver'>
+        {Layers(component)}
+    </div>
   )
 }
