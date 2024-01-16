@@ -1,30 +1,27 @@
-import {
-    GetAllComponents,
-  } from "../Actions/constants";
-  import { findSection } from "../../Utils/FindSection";
-  import { findSettingSection } from "../../Utils/AddSetting";
-  
-  const initialState = {
-    pageBuilder: [],
-    activeSection: null,
-  };
-  
-  // Reducers
-  const BuildReducer = (state = initialState, action) => {
-    switch (action.type) {
-      case GetAllComponents:
-        return {
-          ...state,
-          components: action.payload,
-        };
-      default:
-        console.log("default -->", state);
-        return state;
-    }
-  };
-  
-  export default BuildReducer;
+import { AddSections } from "../Actions/constants";
+import { findSection } from "../../Utils/FindSection";
+import { findSettingSection } from "../../Utils/AddSetting";
 
+const initialState = {
+  pageBuilder: [],
+  activeSection: null,
+};
+
+// Reducers
+const BuildReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case AddSections: // Add section into Page
+      return {
+        ...state,
+        pageBuilder: [...state.pageBuilder, action.payload],
+      };
+    default:
+      console.log("default -->", state);
+      return state;
+  }
+};
+
+export default BuildReducer;
 
 //   case AddSections: // Add section into Page
 //   console.log("Add Section called -->", action.payload);
@@ -60,4 +57,3 @@ import {
 //     ...state,
 //     pageBuilder: result,
 //   };
-  

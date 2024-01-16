@@ -1,17 +1,25 @@
 import react, { useState, useEffect } from "react";
+import "./style.css";
 import { useDrop } from 'react-dnd'
 import { Button, Empty } from "antd";
-import "./style.css";
 import { useSelector, useDispatch } from "react-redux";
+import { addSection } from "../../Redux/Actions/actions";
 import EmptyStateImg from "../../Assets/emptystateimg.svg";
 
 export default function BuilderResolver() {
+  const dispatch = useDispatch()
   const layersData = useSelector((state) => state);
   const [layers, setLayers] = useState(layersData.build.pageBuilder || []);
 
+  useEffect(()=>{
+    setLayers(layersData.build.pageBuilder)
+  },[layersData.build.pageBuilder])
+
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: 'section',
-    drop: () => alert("drop received"),
+    drop: (item) => {
+        dispatch(addSection(item))
+    },
     collect: (monitor) => ({
       isOver: monitor.isOver(),
       canDrop: monitor.canDrop(),

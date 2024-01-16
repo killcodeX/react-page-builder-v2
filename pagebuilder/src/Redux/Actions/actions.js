@@ -1,5 +1,4 @@
 import {
-    GetAllComponents,
     AddLayers,
     ActiveSection,
     AddSections,
@@ -7,14 +6,9 @@ import {
     AddSectionSetting,
   } from "../Actions/constants";
   
-  export const getAllComponents = (components) => {
-    return {
-      type: GetAllComponents,
-      payload: components,
-    };
-  };
   
   export const addSection = (section) => {
+    console.log(section)
     return {
       type: AddSections,
       payload: section,

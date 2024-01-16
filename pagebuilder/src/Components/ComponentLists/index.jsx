@@ -25,9 +25,9 @@ function ComponentCards({item}){
         }),
         end: (item, monitor) => {
             const dropResult = monitor.getDropResult()
-            if (item && dropResult) {
-              alert(`You dropped ${item.name} into ${dropResult.name}!`)
-            }
+            // if (item && dropResult) {
+            //   alert(`You dropped ${item.name} into ${dropResult.name}!`)
+            // }
         }
     }))
 
