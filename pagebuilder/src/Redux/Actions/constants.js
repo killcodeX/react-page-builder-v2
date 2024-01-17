@@ -1,6 +1,6 @@
 // for Builder
-export const GetAllComponents = "GET_ALL_COMPONENTS";
 export const AddSections = "ADD_SECTIONS";
+export const AddGridOrFlex = "ADD_GRID_FLEX";
 export const ActiveSection = "ACTIVE_SECTION";
 export const AddLayers = "ADD_LAYERS";
 

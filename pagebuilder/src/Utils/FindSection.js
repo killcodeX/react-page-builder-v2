@@ -4,10 +4,10 @@ export let findSection = (page, id, layer) => {
     return page.map((section) => {
       //console.log('i am here ->>',section, id)
       if (section.id === id) {
-        if(section.layers){
-          section.layers.push(layer)
+        if(section.components){
+          section.components.push(layer)
         }else{
-          section.layers = [layer]
+          section.components = [layer]
         }
       } else if (section.layers) {
         section.layers = findSection(section.layers, id, layer);

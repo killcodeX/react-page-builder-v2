@@ -10,7 +10,7 @@ export default function ComponentList() {
         <div className='component-list'>
             <div className='component-list-header'>Components</div>
             <div className='component-list-column'>
-                {components.map(item => <ComponentCards item={item} />)}
+                {components.map(item => <ComponentCards key={item.id} item={item} />)}
             </div>
         </div>
     )

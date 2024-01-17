@@ -1,27 +1,26 @@
 import react, { useState, useEffect } from "react";
 import "./style.css";
+import { v4 as uuid } from 'uuid';
 import { useDrop } from "react-dnd";
 import { Empty, Divider } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { addSection } from "../../Redux/Actions/actions";
 import Resolver from "./resolver";
 import EmptyStateImg from "../../Assets/emptystateimg.svg";
-import SectionDrop from "../../Assets/sectiondrop.svg";
-import { PlusOutlined } from "@ant-design/icons";
 
 export default function BuilderResolver() {
   const dispatch = useDispatch();
-  const layersData = useSelector((state) => state);
-  const [layers, setLayers] = useState(layersData.build.pageBuilder || []);
+  const layersData = useSelector((state) => state.build);
+  const [layers, setLayers] = useState(layersData.pageBuilder || []);
 
   useEffect(() => {
-    setLayers(layersData.build.pageBuilder);
-  }, [layersData.build.pageBuilder]);
+    setLayers(layersData.pageBuilder);
+  }, [layersData.pageBuilder]);
 
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: "section",
     drop: (item) => {
-      dispatch(addSection(item));
+      dispatch(addSection({...item, id:uuid()}));
     },
     canDrop: (item) => item.component === "section",
     collect: (monitor) => ({
@@ -54,7 +53,6 @@ export default function BuilderResolver() {
       })}
       <Divider/>
       <div className="drag-drop-section-container" ref={drop}>
-        {/* <PlusOutlined /> */}
         <span>Drag & Drop more Section</span>
       </div>
     </section>

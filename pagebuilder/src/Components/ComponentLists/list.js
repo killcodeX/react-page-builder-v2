@@ -11,8 +11,14 @@ export const components = [
     },
     {
         id:uuid(),
-        label:'Sub Section',
-        component:'sub-section',
+        label:'Grid',
+        component:'grid',
+        icon:<CopyOutlined />,
+    },
+    {
+        id:uuid(),
+        label:'Flex Wrapper',
+        component:'flexwrapper',
         icon:<CopyOutlined />,
     },
     {

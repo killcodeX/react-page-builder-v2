@@ -27,6 +27,10 @@
     margin-bottom: 15px;
 }
 
+.page-builder-component-children{
+    margin-left: 20px;
+}
+
 .page-builder-component-card {
     display:flex;
     justify-content: space-between;
