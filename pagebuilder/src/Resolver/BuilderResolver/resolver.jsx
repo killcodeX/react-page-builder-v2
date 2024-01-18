@@ -8,7 +8,7 @@ export default function Resolver({component}) {
         {
                 component?.components?.length > 0 && component.components.map(item =>{
                     return (
-                        <div className="page-builder-component-children">
+                        <div key={item.id} className="page-builder-component-children">
                             <Resolver 
                                 key={item.id} 
                                 component={item}

@@ -27,6 +27,10 @@
     margin-bottom: 15px;
 }
 
+.layer-container{
+    margin-bottom: 8px;
+}
+
 .page-builder-component-children{
     margin-left: 20px;
 }
@@ -78,4 +82,18 @@
     font-size: 14px;
     margin-top: 10px;
     margin-left: 20px;
+}
+
+/* grid drop area */
+.drag-drop-grid-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    color: #758490;
+    font-size: 14px;
+    margin-top: 10px;
+    border: 2px dashed #dfdfdf;
+    height:35px;
+    width:100%;
 }
