@@ -4,22 +4,22 @@ import { Col, Row } from "antd";
 import { useDispatch } from "react-redux";
 
 export default function GridResolver({ totalColumn }) {
+  console.log("::", totalColumn)
   let [columns, setColumns] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
     let col = [];
-    for (let i = 0; i < totalColumn; i++) {
+    for (let i = 0; i < totalColumn.column; i++) {
       col.push(
-        <Col span={Math.trunc(24/totalColumn)}>
+        <Col offset={1} span={Math.trunc(24/totalColumn.column)}>
           <div className="drag-drop-grid-container">
             <span>Drag & Drop a component</span>
           </div>
         </Col>
       );
-
-      setColumns(col)
     }
+    setColumns(col)
   }, [totalColumn]);
 
   const [{ canDrop, isOver, dropTargets }, drop] = useDrop(() => ({

@@ -19,7 +19,7 @@ const Types = {
 export function Layers(layer) {
   const dispatch = useDispatch();
   const [activeSection, setActiveSection] = useState(null);
-  const [totalColumn, setTotalColumn] = useState(8);
+  const [totalColumn, setTotalColumn] = useState({column:2});
   const [openDrawer, setOpenDrawer] = useState(false);
   const [{ canDrop, isOver, dropTargets }, drop] = useDrop(() => ({
     accept: ["grid", "flexwrapper"],
@@ -50,9 +50,6 @@ export function Layers(layer) {
               open={openDrawer}
             >
               <Section />
-              <p>Some contents...</p>
-              <p>Some contents...</p>
-              <p>Some contents...</p>
             </Drawer>
           </div>
           {!layer.components && (

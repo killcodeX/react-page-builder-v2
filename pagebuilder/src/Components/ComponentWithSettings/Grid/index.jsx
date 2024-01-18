@@ -1,26 +1,68 @@
-import React from "react";
-import { Slider } from "antd";
+import React, { useState, useEffect} from "react";
+import { Slider, Divider, Input, notification } from "antd";
+import "./style.css"
 
-const columns = {
+const columnsTypes = {
   2: "2",
   3: "3",
   4: "4",
-  6: "6",
-  8: "8",
-  12: "12",
+  6: "6"
 };
 
 export default function GridSetting({totalColumn, setTotalColumn}) {
+  const [api, contextHolder] = notification.useNotification();
+  let [columns, setColumns] = useState([]);
+
+  // const openNotificationWithIcon = () => {
+  //   api["error"]({
+  //     message: 'Column Span Error',
+  //     description:'Column Span can only be between 1 to 12',
+  //   });
+  // };
+
+  // useEffect(() => {
+  //   let col = [];
+  //   for (let i = 0; i < totalColumn.column; i++) {
+  //     col.push(
+  //       <div className="column-span-container">
+  //         <span>Column {i+1}</span>
+  //         <Input type="number" min={1} max={24} onChange={(e) => {
+  //           console.log(e.target.value)
+  //           if(e.target.value && (e.target.value <= 0 || e.target.value > 12)){
+  //             openNotificationWithIcon()
+  //           }
+  //           let obj = {}
+  //           obj["id"]=i+1
+  //           obj["span"]=e.target.value
+  //           setTotalColumn({totalColumn, columnDetails:[...totalColumn?.columnDetails, obj]})
+  //         }}/>
+  //       </div>
+  //     );
+  //   }
+  //   setColumns(col)
+  // }, [totalColumn]);
+
+
   return (
+    <>
+    {contextHolder}
     <div className="component-setting-container">
       <div className="component-setting-heading">Number of Columns</div>
       <Slider
         min={0}
         max={12}
-        value={totalColumn}
-        onChange={(val) => setTotalColumn(val)}
-        marks={columns}
+        value={totalColumn.column}
+        onChange={(val) => setTotalColumn({...totalColumn, column:val})}
+        marks={columnsTypes}
       />
+      <Divider/>
+      {/* <div className="component-setting-heading">Each Columns Span</div>
+      {
+        columns.length > 0 && columns.map((item,index) => {
+            return <React.Fragment key={index}>{item}</React.Fragment>
+        })
+      } */}
     </div>
+    </>
   );
 }

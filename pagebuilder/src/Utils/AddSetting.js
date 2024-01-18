@@ -5,7 +5,7 @@ export let findSettingSection = (page, obj) => {
       if (section.id === obj.id) {
           //console.log('this is seetingggg -->', section)
           section.containerType = obj.containerType
-          section.layers.push(obj.layer)
+          section.layers.push({...obj.layer, icon:""})
       } else if (section.layers) {
         section.layers = findSettingSection(section.layers);
       }

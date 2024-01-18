@@ -1,0 +1,17 @@
+.component-setting-heading{
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+
+.column-span-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.column-span-container span{
+    width: 140px;
+}
