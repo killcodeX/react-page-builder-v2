@@ -1,6 +1,7 @@
 import {
     AddSections,
     AddGridOrFlex,
+    AddComponentToGrid
   } from "../Actions/constants";
   
   
@@ -15,6 +16,14 @@ import {
     return {
       type: AddGridOrFlex,
       payload: {sectionId, component},
+    };
+  };
+
+
+  export const addComponentToGrid = (gridId, columnId, component) => {
+    return {
+      type: AddComponentToGrid,
+      payload: {gridId, columnId, component},
     };
   };
   

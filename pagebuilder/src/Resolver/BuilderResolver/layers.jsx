@@ -75,10 +75,10 @@ export function Layers(layer) {
               onClose={() => setOpenDrawer(false)}
               open={openDrawer}
             >
-              <Grid totalColumn={totalColumn} setTotalColumn={setTotalColumn}/>
+              <Grid gridId={layer.id} totalColumn={totalColumn} setTotalColumn={setTotalColumn}/>
             </Drawer>
           </div>
-          <GridResolver  totalColumn={totalColumn}/>
+          {/* <GridResolver gridId={layer.id} totalColumn={totalColumn}/> */}
         </div>
       );
     case "flexwrapper":

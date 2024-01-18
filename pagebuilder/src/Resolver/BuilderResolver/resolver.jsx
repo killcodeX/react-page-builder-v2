@@ -10,7 +10,7 @@ export default function Resolver({component}) {
                     return (
                         <div key={item.id} className="page-builder-component-children">
                             <Resolver 
-                                key={item.id} 
+                                id={item.id} 
                                 component={item}
                             />
                         </div>

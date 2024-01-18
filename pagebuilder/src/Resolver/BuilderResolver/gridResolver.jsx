@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useDrop } from "react-dnd";
 import { Col, Row } from "antd";
 import { useDispatch } from "react-redux";
+import { v4 as uuid } from 'uuid';
+import { addComponentToGrid } from "../../Redux/Actions/actions";
 
-export default function GridResolver({ totalColumn }) {
-  console.log("::", totalColumn)
+export default function GridResolver({ gridId, totalColumn }) {
   let [columns, setColumns] = useState([]);
   const dispatch = useDispatch();
 
@@ -12,21 +13,27 @@ export default function GridResolver({ totalColumn }) {
     let col = [];
     for (let i = 0; i < totalColumn.column; i++) {
       col.push(
-        <Col offset={1} span={Math.trunc(24/totalColumn.column)}>
-          <div className="drag-drop-grid-container">
-            <span>Drag & Drop a component</span>
-          </div>
-        </Col>
+        <DragColumn totalColumn={totalColumn} gridId={gridId} dispatch={dispatch}/>
       );
     }
-    setColumns(col)
+    setColumns(col);
   }, [totalColumn]);
 
-  const [{ canDrop, isOver, dropTargets }, drop] = useDrop(() => ({
+  return (
+    <Row wrap>
+      {columns.length > 0 &&
+        columns.map((item, index) => {
+          return <React.Fragment key={index}>{item}</React.Fragment>;
+        })}
+    </Row>
+  );
+}
+
+function DragColumn({gridId, columnId, totalColumn, dispatch}) {
+  const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: ["grid", "flexwrapper", "button"],
     drop: (item, monitor) => {
-      //   dispatch(addGridorFlex(layer.id, item));
-      console.log(item);
+      dispatch(addComponentToGrid(gridId, columnId, item));
     },
     collect: (monitor) => ({
       isOver: monitor.isOver(),
@@ -35,12 +42,10 @@ export default function GridResolver({ totalColumn }) {
   }));
 
   return (
-    <Row wrap ref={drop}>
-      {
-        columns.length > 0 && columns.map((item,index) => {
-            return <React.Fragment key={index}>{item}</React.Fragment>
-        })
-      }
-    </Row>
+    <Col ref={drop} offset={1} span={Math.trunc(24 / totalColumn.column)}>
+      <div className="drag-drop-grid-container">
+        <span>Drag & Drop a component</span>
+      </div>
+    </Col>
   );
 }

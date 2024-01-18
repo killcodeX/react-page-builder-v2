@@ -1,7 +1,7 @@
 // for Builder
 export const AddSections = "ADD_SECTIONS";
 export const AddGridOrFlex = "ADD_GRID_FLEX";
-export const ActiveSection = "ACTIVE_SECTION";
+export const AddComponentToGrid = "ADD_COMPONENT_TO_GRID_COLUMN";
 export const AddLayers = "ADD_LAYERS";
 
 // for saving layer's setting
