@@ -43,15 +43,13 @@ export default function ButtonSetting({
           <Button
             type="primary"
             onClick={() => {
-              // let style={
-              //   display:disFlex,
-              //   flexDirection:flexDir,
-              //   justifyContent:justify,
-              //   alignItems:align,
-              //   gap:gap,
-              //   ...extraStyle
-              // }
-              //dispatch(addSettingToComponent(id, style))
+              let style={
+                label:label,
+                type:type,
+                icon:icon,
+                action:action
+              }
+              dispatch(addSettingToComponent(component.id, style))
               openNotificationWithIcon();
               onClose();
             }}
