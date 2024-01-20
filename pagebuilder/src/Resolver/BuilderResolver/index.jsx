@@ -20,6 +20,7 @@ export default function BuilderResolver() {
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: "section",
     drop: (item) => {
+      delete item["icon"]
       dispatch(addSection({...item, id:uuid()}));
     },
     canDrop: (item) => item.component === "section",

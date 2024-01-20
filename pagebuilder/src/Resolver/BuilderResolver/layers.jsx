@@ -25,6 +25,7 @@ export function Layers(layer) {
   const [{ canDrop, isOver, dropTargets }, drop] = useDrop(() => ({
     accept: ["grid", "flexwrapper"],
     drop: (item, monitor) => {
+      delete item["icon"]
       dispatch(addGridorFlex(layer.id, item));
     },
     collect: (monitor) => ({
