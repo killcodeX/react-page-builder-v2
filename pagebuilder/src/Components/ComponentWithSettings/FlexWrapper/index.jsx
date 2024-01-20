@@ -12,14 +12,15 @@ const gapTypes = {
   64: "64"
 };
 
-export default function FlexWrapperSetting({id, title, onClose, openDrawer}) {
+export default function FlexWrapperSetting({component, title, onClose, openDrawer}) {
+  let { style } = component;
   const [api, contextHolder] = notification.useNotification();
   const dispatch = useDispatch();
-  const [disFlex, setDisFlex] = useState("flex")
-  const [flexDir, setFlexDir] = useState("row")
-  const [justify, setJustify] = useState("flex-start")
-  const [align, setAlign] = useState("flex-start")
-  const [gap, setGap] = useState("8");
+  const [disFlex, setDisFlex] = useState(style.display)
+  const [flexDir, setFlexDir] = useState(style.flexDirection)
+  const [justify, setJustify] = useState(style.justifyContent)
+  const [align, setAlign] = useState(style.alignItems)
+  const [gap, setGap] = useState(style.gap);
   const [extraStyle, setExtraStyle] = useState(null)
 
     const openNotificationWithIcon = () => {
@@ -47,7 +48,7 @@ export default function FlexWrapperSetting({id, title, onClose, openDrawer}) {
               gap:gap,
               ...extraStyle
             }
-            dispatch(addSettingToComponent(id, style))
+            dispatch(addSettingToComponent(component.id, style))
             openNotificationWithIcon()
             onClose()
           }}>

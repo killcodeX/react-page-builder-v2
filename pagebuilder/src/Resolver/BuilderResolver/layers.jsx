@@ -102,7 +102,7 @@ export function Layers(layer) {
               <EditOutlined />
             </div>
             <FlexWrapper
-              id={layer.id}
+              component={layer}
               title="Flex Setting"
               onClose={() => setOpenDrawer(false)}
               openDrawer={openDrawer}

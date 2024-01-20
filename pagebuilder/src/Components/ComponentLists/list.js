@@ -24,7 +24,8 @@ export const components = [
             display:"flex",
             flexDirection:"row",
             justifyContent:"flex-start",
-            alignItems:"8px"
+            alignItems:"flex-start",
+            gap:"8"
         },
     },
     {
