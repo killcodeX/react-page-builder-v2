@@ -8,6 +8,7 @@ export const components = [
         label:'Section',
         component:'section',
         icon:<CopyOutlined />,
+        style:{}
     },
     {
         id:uuid(),

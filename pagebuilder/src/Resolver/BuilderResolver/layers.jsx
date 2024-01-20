@@ -47,6 +47,7 @@ export function Layers(layer) {
               <EditOutlined />
             </div>
             <Section
+              component={layer}
               title="Flex Setting"
               onClose={() => setOpenDrawer(false)}
               openDrawer={openDrawer}

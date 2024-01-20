@@ -11,7 +11,6 @@ export default function SectionSetting({
   onClose,
   openDrawer,
 }) {
-  let { style } = component;
   const [api, contextHolder] = notification.useNotification();
   const dispatch = useDispatch();
   const [extraStyle, setExtraStyle] = useState(null)
