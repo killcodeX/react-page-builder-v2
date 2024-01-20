@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from "react";
 import { Slider, Divider, Input, notification, Drawer, Space, Button } from "antd";
-import "./style.css"
+import "../style.css"
 
 const columnsTypes = {
   2: "2",

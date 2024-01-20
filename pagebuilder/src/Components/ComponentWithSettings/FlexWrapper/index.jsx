@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { Slider, Select, Divider, notification, Drawer, Space, Button } from "antd";
+import { Slider, Select, Divider, notification, Drawer, Space, Button, Input } from "antd";
 import { useDispatch } from "react-redux";
 import { addSettingToComponent } from "../../../Redux/Actions/actions";
+
+const { TextArea } = Input;
 
 const gapTypes = {
   8: "8",
@@ -17,7 +19,8 @@ export default function FlexWrapperSetting({id, title, onClose, openDrawer}) {
   const [flexDir, setFlexDir] = useState("row")
   const [justify, setJustify] = useState("flex-start")
   const [align, setAlign] = useState("flex-start")
-  const [gap, setGap] = useState("8")
+  const [gap, setGap] = useState("8");
+  const [extraStyle, setExtraStyle] = useState(null)
 
     const openNotificationWithIcon = () => {
     api["success"]({
@@ -41,7 +44,8 @@ export default function FlexWrapperSetting({id, title, onClose, openDrawer}) {
               flexDirection:flexDir,
               justifyContent:justify,
               alignItems:align,
-              gap:gap
+              gap:gap,
+              ...extraStyle
             }
             dispatch(addSettingToComponent(id, style))
             openNotificationWithIcon()
@@ -114,6 +118,13 @@ export default function FlexWrapperSetting({id, title, onClose, openDrawer}) {
         onChange={(val) => setGap(val)}
         marks={gapTypes}
       />
+    <Divider/>
+    <div className="component-setting-heading">Add Extra Style</div>
+    <div className='extra-style-information'>
+      <span>- Add Extra style to your component like padding, margin, background-color, etc.</span>
+      <span>- Write your vanila css wrapping under {"{}"} bracket!</span>
+    </div>
+    <TextArea rows={5}  value={extraStyle} onChange={(e) => setExtraStyle(e.target.value)}/>
     <Divider/>
   </div>
   </Drawer>
