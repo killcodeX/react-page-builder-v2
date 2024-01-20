@@ -1,7 +1,8 @@
 import {
     AddSections,
     AddGridOrFlex,
-    AddComponentToGrid
+    AddComponentToGrid,
+    AddComponentToFlex
   } from "../Actions/constants";
   
   
@@ -26,32 +27,12 @@ import {
       payload: {gridId, columnId, component},
     };
   };
-  
-  // export const addSectionSetting = (obj) => {
-  //   return {
-  //     type: AddSectionSetting,
-  //     payload: obj,
-  //   };
-  // };
-  
-  // export const activeSection = (id) => {
-  //   return {
-  //     type: ActiveSection,
-  //     payload: id,
-  //   };
-  // };
-  
-  // export const addLayers = (layer) => {
-  //   return {
-  //     type: AddLayers,
-  //     payload: layer,
-  //   };
-  // };
-  
-  // export const addSetting = (setting) => {
-  //   return {
-  //     type: AddSetting,
-  //     payload: setting,
-  //   };
-  // };
+
+  export const addComponentToFlex = (flexId, component) => {
+    return {
+      type: AddComponentToFlex,
+      payload: {flexId, component},
+    };
+  };
+
   

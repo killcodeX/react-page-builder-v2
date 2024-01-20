@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { Drawer } from "antd";
+import Drawer from "../../Utils/Drawer";
 import { useDrop } from "react-dnd";
 import { useSelector, useDispatch } from "react-redux";
 import { addSection, addGridorFlex } from "../../Redux/Actions/actions";
 import { EditOutlined } from "@ant-design/icons";
 import GridResolver from "./gridResolver";
+import FlexResolver from "./FlexResolver";
+import Resolver from "./resolver";
 import {
   Section,
   Grid,
@@ -19,7 +21,7 @@ const Types = {
 export function Layers(layer) {
   const dispatch = useDispatch();
   const [activeSection, setActiveSection] = useState(null);
-  const [totalColumn, setTotalColumn] = useState({column:2});
+  const [totalColumn, setTotalColumn] = useState({ column: 2 });
   const [openDrawer, setOpenDrawer] = useState(false);
   const [{ canDrop, isOver, dropTargets }, drop] = useDrop(() => ({
     accept: ["grid", "flexwrapper"],
@@ -47,11 +49,19 @@ export function Layers(layer) {
             <Drawer
               title="Section Setting"
               onClose={() => setOpenDrawer(false)}
-              open={openDrawer}
+              openDrawer={openDrawer}
             >
               <Section />
             </Drawer>
           </div>
+          {layer?.components?.length > 0 &&
+            layer.components.map((item) => {
+              return (
+                <div key={item.id} className="page-builder-component-children">
+                  <Resolver id={item.id} component={item} />
+                </div>
+              );
+            })}
           {!layer.components && (
             <div className="drag-drop-component-container">
               <span>Drag & Drop Grid or FlexWrapper</span>
@@ -73,12 +83,16 @@ export function Layers(layer) {
             <Drawer
               title="Grid Setting"
               onClose={() => setOpenDrawer(false)}
-              open={openDrawer}
+              openDrawer={openDrawer}
             >
-              <Grid gridId={layer.id} totalColumn={totalColumn} setTotalColumn={setTotalColumn}/>
+              <Grid
+                gridId={layer.id}
+                totalColumn={totalColumn}
+                setTotalColumn={setTotalColumn}
+              />
             </Drawer>
           </div>
-          {/* <GridResolver gridId={layer.id} totalColumn={totalColumn}/> */}
+          <GridResolver gridId={layer.id} totalColumn={totalColumn} />
         </div>
       );
     case "flexwrapper":
@@ -93,28 +107,42 @@ export function Layers(layer) {
               <EditOutlined />
             </div>
             <Drawer
+              title="Flex Setting"
+              onClose={() => setOpenDrawer(false)}
+              openDrawer={openDrawer}
+            >
+              <FlexWrapper />
+            </Drawer>
+          </div>
+          {layer?.components?.length > 0 &&
+            layer.components.map((item) => {
+              return (
+                <div key={item.id} className="page-builder-component-children">
+                  <Resolver id={item.id} component={item} />
+                </div>
+              );
+            })}
+          <FlexResolver flexId={layer.id} />
+        </div>
+      );
+    case "button":
+      return (
+        <div className="layer-container">
+          <div className="page-builder-component-card" key={layer.id}>
+            <div className="page-builder-component-label">Button</div>
+            <div
+              className="page-builder-component-edit"
+              onClick={() => setOpenDrawer(true)}
+            >
+              <EditOutlined />
+            </div>
+            <Drawer
               title="Flex Wrapper Setting"
               onClose={() => setOpenDrawer(false)}
               open={openDrawer}
             >
               <Grid />
-              <p>Some contents...</p>
-              <p>Some contents...</p>
-              <p>Some contents...</p>
             </Drawer>
-            {/* <Drawer anchor="right" open={drawer} onClose={() => setDrawer(false)}>
-                <Section
-                  drawer={drawer}
-                  setDrawer={setDrawer}
-                  id={layer.id}
-                  setOpenSnackbar={setOpenSnackbar}
-                  setMessage={setMessage}
-                  setSnackbarType={setSnackbarType}
-                />
-              </Drawer> */}
-          </div>
-          <div className="drag-drop-component-container">
-              <span>Drag & Drop a component</span>
           </div>
         </div>
       );

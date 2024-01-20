@@ -52,7 +52,7 @@ export default function BuilderResolver() {
         return <Resolver key={component.id} component={component} />;
       })}
       <Divider/>
-      <div className="drag-drop-section-container" ref={drop}>
+      <div className={`drag-drop-section-container ${isOver && !canDrop? "red":""}`} ref={drop}>
         <span>Drag & Drop more Section</span>
       </div>
     </section>

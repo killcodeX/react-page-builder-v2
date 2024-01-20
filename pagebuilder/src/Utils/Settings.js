@@ -2,6 +2,7 @@
 
 export let findSection = (page, id, layer) => {
     return page.map((section) => {
+      console.log("called", section)
       //console.log('i am here ->>',section, id)
       if (section.id === id) {
         if(section.components){
@@ -9,8 +10,8 @@ export let findSection = (page, id, layer) => {
         }else{
           section.components = [layer]
         }
-      } else if (section.layers) {
-        section.layers = findSection(section.layers, id, layer);
+      } else if (section.components) {
+        section.components = findSection(section.components, id, layer);
       }
       return section;
     });
@@ -18,7 +19,6 @@ export let findSection = (page, id, layer) => {
 
 
   // function to find section and add layer into it
-
 export let findSettingSection = (page, obj) => {
     return page.map((section) => {
       if (section.id === obj.id) {
