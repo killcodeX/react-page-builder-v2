@@ -13,10 +13,10 @@ export default function PageBuilder() {
   return (
     <section className="page-builder">
       <Row>
-        <Col span={6}>
+        <Col span={5}>
           <ComponentList/>
         </Col>
-        <Col span={18} style={{background:"#f8fafc"}}>
+        <Col span={19} style={{background:"#f8fafc"}}>
           <BuilderResolver/>
         </Col>
       </Row>
