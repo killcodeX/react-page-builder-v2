@@ -1,4 +1,10 @@
-import { AddSections, AddGridOrFlex, AddComponentToGrid, AddComponentToFlex } from "../Actions/constants";
+import {
+  AddSections,
+  AddGridOrFlex,
+  AddComponentToGrid,
+  AddComponentToFlex,
+  AddSettingToComponent,
+} from "../Actions/constants";
 import { findSection, findSettingSection } from "../../Utils/Settings";
 
 const initialState = {
@@ -15,22 +21,38 @@ const BuildReducer = (state = initialState, action) => {
         pageBuilder: [...state.pageBuilder, action.payload],
       };
     case AddGridOrFlex:
-      let res = findSection(state.pageBuilder, action.payload.sectionId, action.payload.component)
+      let res = findSection(
+        state.pageBuilder,
+        action.payload.sectionId,
+        action.payload.component
+      );
       return {
         ...state,
-        pageBuilder:res
-      }
+        pageBuilder: res,
+      };
     case AddComponentToGrid:
-      return{
-        ...state
-      }
-    case AddComponentToFlex:
-      console.log(action.payload)
-      let flexres = findSection(state.pageBuilder, action.payload.flexId, action.payload.component)
       return {
         ...state,
-        pageBuilder:flexres
-      }
+      };
+    case AddComponentToFlex:
+      let flexres = findSection(
+        state.pageBuilder,
+        action.payload.flexId,
+        action.payload.component
+      );
+      return {
+        ...state,
+        pageBuilder: flexres,
+      };
+    case AddSettingToComponent:
+      // let flexres = findSection(
+      //   state.pageBuilder,
+      //   action.payload.flexId,
+      //   action.payload.component
+      // );
+      return {
+        ...state
+      };
     default:
       return state;
   }

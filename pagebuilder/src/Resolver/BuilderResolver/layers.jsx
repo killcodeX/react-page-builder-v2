@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Drawer from "../../Utils/Drawer";
 import { useDrop } from "react-dnd";
 import { useSelector, useDispatch } from "react-redux";
 import { addSection, addGridorFlex } from "../../Redux/Actions/actions";
@@ -46,13 +45,9 @@ export function Layers(layer) {
             >
               <EditOutlined />
             </div>
-            <Drawer
-              title="Section Setting"
+              <Section title="Flex Setting"
               onClose={() => setOpenDrawer(false)}
-              openDrawer={openDrawer}
-            >
-              <Section />
-            </Drawer>
+              openDrawer={openDrawer}/>
           </div>
           {layer?.components?.length > 0 &&
             layer.components.map((item) => {
@@ -80,17 +75,14 @@ export function Layers(layer) {
             >
               <EditOutlined />
             </div>
-            <Drawer
+              <Grid
               title="Grid Setting"
               onClose={() => setOpenDrawer(false)}
               openDrawer={openDrawer}
-            >
-              <Grid
                 gridId={layer.id}
                 totalColumn={totalColumn}
                 setTotalColumn={setTotalColumn}
               />
-            </Drawer>
           </div>
           <GridResolver gridId={layer.id} totalColumn={totalColumn} />
         </div>
@@ -106,13 +98,11 @@ export function Layers(layer) {
             >
               <EditOutlined />
             </div>
-            <Drawer
+            <FlexWrapper
               title="Flex Setting"
               onClose={() => setOpenDrawer(false)}
               openDrawer={openDrawer}
-            >
-              <FlexWrapper />
-            </Drawer>
+            />
           </div>
           {layer?.components?.length > 0 &&
             layer.components.map((item) => {
@@ -136,13 +126,13 @@ export function Layers(layer) {
             >
               <EditOutlined />
             </div>
-            <Drawer
+            {/* <Drawer
               title="Flex Wrapper Setting"
               onClose={() => setOpenDrawer(false)}
               open={openDrawer}
             >
               <Grid />
-            </Drawer>
+            </Drawer> */}
           </div>
         </div>
       );

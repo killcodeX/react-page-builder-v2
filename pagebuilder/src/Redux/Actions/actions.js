@@ -2,7 +2,8 @@ import {
     AddSections,
     AddGridOrFlex,
     AddComponentToGrid,
-    AddComponentToFlex
+    AddComponentToFlex,
+    AddSettingToComponent
   } from "../Actions/constants";
   
   
@@ -34,5 +35,12 @@ import {
       payload: {flexId, component},
     };
   };
+
+  export const addSettingToComponent = (id, setting) =>{
+    return {
+      type: AddSettingToComponent,
+      payload:{id, setting}
+    }
+  }
 
   

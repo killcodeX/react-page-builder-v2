@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Slider, Select, Divider } from "antd";
+import { Slider, Select, Divider, Drawer, Space, Button } from "antd";
+import { useDispatch } from "react-redux";
+import { addSettingToComponent } from "../../../Redux/Actions/actions";
 
 const gapTypes = {
   8: "8",
@@ -8,7 +10,8 @@ const gapTypes = {
   64: "64"
 };
 
-export default function FlexWrapperSetting() {
+export default function FlexWrapperSetting({id, title, onClose, openDrawer}) {
+  const dispatch = useDispatch();
   const [disFlex, setDisFlex] = useState("flex")
   const [flexDir, setFlexDir] = useState("row")
   const [justify, setJustify] = useState("flex-start")
@@ -17,6 +20,19 @@ export default function FlexWrapperSetting() {
 
 
   return (
+    <Drawer
+      title={title}
+      onClose={onClose}
+      open={openDrawer}
+      extra={
+        <Space>
+          <Button onClick={onClose}>Cancel</Button>
+          <Button type="primary" onClick={onClose}>
+            Save
+          </Button>
+        </Space>
+      }
+    >
     <div className="component-setting-container">
     <div className="component-setting-heading">Display Type</div>
     <Select
@@ -80,5 +96,6 @@ export default function FlexWrapperSetting() {
       />
     <Divider/>
   </div>
+  </Drawer>
   )
 }

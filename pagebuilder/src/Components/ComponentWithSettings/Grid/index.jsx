@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import { Slider, Divider, Input, notification } from "antd";
+import { Slider, Divider, Input, notification, Drawer, Space, Button } from "antd";
 import "./style.css"
 
 const columnsTypes = {
@@ -9,7 +9,7 @@ const columnsTypes = {
   6: "6"
 };
 
-export default function GridSetting({totalColumn, setTotalColumn}) {
+export default function GridSetting({totalColumn, setTotalColumn, title, onClose, openDrawer}) {
   const [api, contextHolder] = notification.useNotification();
   let [columns, setColumns] = useState([]);
 
@@ -44,7 +44,19 @@ export default function GridSetting({totalColumn, setTotalColumn}) {
 
 
   return (
-    <>
+    <Drawer
+    title={title}
+    onClose={onClose}
+    open={openDrawer}
+    extra={
+      <Space>
+        <Button onClick={onClose}>Cancel</Button>
+        <Button type="primary" onClick={onClose}>
+          Save
+        </Button>
+      </Space>
+    }
+  >
     {contextHolder}
     <div className="component-setting-container">
       <div className="component-setting-heading">Number of Columns</div>
@@ -63,6 +75,6 @@ export default function GridSetting({totalColumn, setTotalColumn}) {
         })
       } */}
     </div>
-    </>
+    </Drawer>
   );
 }

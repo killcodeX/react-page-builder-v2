@@ -6,5 +6,5 @@ export const AddComponentToFlex = "ADD_COMPONENT_TO_FLEX";
 export const AddLayers = "ADD_LAYERS";
 
 // for saving layer's setting
-export const AddSetting = "ADD_SETTING";
+export const AddSettingToComponent = "ADD_SETTING_TO_COMPONENT";
 export const AddSectionSetting = "ADD_SECTION_SETTING";
