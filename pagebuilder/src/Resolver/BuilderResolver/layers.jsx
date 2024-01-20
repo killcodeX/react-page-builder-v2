@@ -45,9 +45,11 @@ export function Layers(layer) {
             >
               <EditOutlined />
             </div>
-              <Section title="Flex Setting"
+            <Section
+              title="Flex Setting"
               onClose={() => setOpenDrawer(false)}
-              openDrawer={openDrawer}/>
+              openDrawer={openDrawer}
+            />
           </div>
           {layer?.components?.length > 0 &&
             layer.components.map((item) => {
@@ -75,14 +77,14 @@ export function Layers(layer) {
             >
               <EditOutlined />
             </div>
-              <Grid
+            <Grid
               title="Grid Setting"
               onClose={() => setOpenDrawer(false)}
               openDrawer={openDrawer}
-                gridId={layer.id}
-                totalColumn={totalColumn}
-                setTotalColumn={setTotalColumn}
-              />
+              gridId={layer.id}
+              totalColumn={totalColumn}
+              setTotalColumn={setTotalColumn}
+            />
           </div>
           <GridResolver gridId={layer.id} totalColumn={totalColumn} />
         </div>
@@ -99,6 +101,7 @@ export function Layers(layer) {
               <EditOutlined />
             </div>
             <FlexWrapper
+              id={layer.id}
               title="Flex Setting"
               onClose={() => setOpenDrawer(false)}
               openDrawer={openDrawer}

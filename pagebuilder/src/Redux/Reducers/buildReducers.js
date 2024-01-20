@@ -5,7 +5,7 @@ import {
   AddComponentToFlex,
   AddSettingToComponent,
 } from "../Actions/constants";
-import { findSection, findSettingSection } from "../../Utils/Settings";
+import { findSection, findSettingSection, AddSettingToComponents } from "../../Utils/Settings";
 
 const initialState = {
   pageBuilder: [],
@@ -45,11 +45,11 @@ const BuildReducer = (state = initialState, action) => {
         pageBuilder: flexres,
       };
     case AddSettingToComponent:
-      // let flexres = findSection(
-      //   state.pageBuilder,
-      //   action.payload.flexId,
-      //   action.payload.component
-      // );
+      let settingres = AddSettingToComponents(
+        state.pageBuilder,
+        action.payload.id,
+        action.payload.setting
+      );
       return {
         ...state
       };
@@ -59,38 +59,3 @@ const BuildReducer = (state = initialState, action) => {
 };
 
 export default BuildReducer;
-
-//   case AddSections: // Add section into Page
-//   console.log("Add Section called -->", action.payload);
-//   return {
-//     ...state,
-//     pageBuilder: [...state.pageBuilder, action.payload],
-//   };
-// case ActiveSection: // Save current active session
-//   console.log("Active Section called -->", action.payload);
-//   return {
-//     ...state,
-//     activeSection: action.payload,
-//   };
-// case AddLayers: // Add layers/element into section
-//   let res = findSection(
-//     state.pageBuilder,
-//     state.activeSection,
-//     action.payload,
-//   );
-//   return {
-//     ...state,
-//     pageBuilder: res,
-//   };
-// case AddSetting: // Add Saved Setting into preview object
-//   console.log("AddSetting called", action.payload);
-//   return {
-//     ...state,
-//   };
-// case AddSectionSetting: // Add Saved Setting into preview object
-//   let result = findSettingSection(state.pageBuilder, action.payload);
-//   console.log("AddSetting called", result);
-//   return {
-//     ...state,
-//     pageBuilder: result,
-//   };

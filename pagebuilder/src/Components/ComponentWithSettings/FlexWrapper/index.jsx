@@ -16,7 +16,7 @@ export default function FlexWrapperSetting({id, title, onClose, openDrawer}) {
   const [flexDir, setFlexDir] = useState("row")
   const [justify, setJustify] = useState("flex-start")
   const [align, setAlign] = useState("flex-start")
-  const [gap, setGap] = useState("8px")
+  const [gap, setGap] = useState("8")
 
 
   return (
@@ -27,7 +27,16 @@ export default function FlexWrapperSetting({id, title, onClose, openDrawer}) {
       extra={
         <Space>
           <Button onClick={onClose}>Cancel</Button>
-          <Button type="primary" onClick={onClose}>
+          <Button type="primary" onClick={()=>{
+            let style={
+              flex:disFlex,
+              flexDirection:flexDir,
+              justifyContent:justify,
+              alignItems:align,
+              gap:gap
+            }
+            dispatch(addSettingToComponent(id, style))
+          }}>
             Save
           </Button>
         </Space>
