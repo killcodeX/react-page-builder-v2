@@ -10,6 +10,7 @@ import {
   Section,
   Grid,
   FlexWrapper,
+  Button,
 } from "../../Components/ComponentWithSettings";
 
 const Types = {
@@ -129,13 +130,12 @@ export function Layers(layer) {
             >
               <EditOutlined />
             </div>
-            {/* <Drawer
-              title="Flex Wrapper Setting"
+            <Button
+              component={layer}
+              title="Flex Setting"
               onClose={() => setOpenDrawer(false)}
-              open={openDrawer}
-            >
-              <Grid />
-            </Drawer> */}
+              openDrawer={openDrawer}
+            />
           </div>
         </div>
       );
