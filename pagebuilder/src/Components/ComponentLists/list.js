@@ -20,6 +20,24 @@ export const components = [
         label:'Flex Wrapper',
         component:'flexwrapper',
         icon:<CopyOutlined />,
+        style:{
+            display:"flex",
+            flexDirection:"row",
+            justifyContent:"flex-start",
+            alignItems:"8px"
+        },
+    },
+    {
+        id:uuid(),
+        label:'Button',
+        component:'button',
+        icon:<CopyOutlined />,
+        style:{
+            label:"Button",
+            type:"primary",
+            action:"click",
+            icon:null
+        },
     },
     {
         id:uuid(),
@@ -37,12 +55,6 @@ export const components = [
         id:uuid(),
         label:'Date Picker',
         component:'date-picker',
-        icon:<CopyOutlined />,
-    },
-    {
-        id:uuid(),
-        label:'Button',
-        component:'button',
         icon:<CopyOutlined />,
     },
     {

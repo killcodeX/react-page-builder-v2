@@ -2,7 +2,6 @@ import React from 'react';
 import PageResolver from '../../../Resolver/PageResolver';
 
 export default function Flex({data}) {
-  console.log("component", data)
   return (
     <div className='page-flex-wrapper' style={data.style}>
       {
