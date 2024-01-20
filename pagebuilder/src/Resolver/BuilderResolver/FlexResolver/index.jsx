@@ -8,7 +8,6 @@ export default function FlexResolver({flexId}) {
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: ["grid", "flexwrapper", "button"],
     drop: (item, monitor) => {
-      delete item["icon"]
       dispatch(addComponentToFlex(flexId, item));
     },
     collect: (monitor) => ({

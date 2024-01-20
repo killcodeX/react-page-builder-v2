@@ -15,7 +15,6 @@ function Header({isDarkMode, setIsDarkMode}){
         navigate('/');
     }
     const moveToGenerate = () =>{
-        console.log('moveToGenerate')
         navigate('/json-generator');
     }
 
@@ -25,7 +24,7 @@ function Header({isDarkMode, setIsDarkMode}){
             <header className='header'>
                 <div className='header-left-side'>Page Builder</div>
                 <div className='right-left-side'>
-                    <Switch value={isDarkMode} onChange={() => setIsDarkMode(!isDarkMode)} />
+                    {/* <Switch value={isDarkMode} onChange={() => setIsDarkMode(!isDarkMode)} /> */}
                     <Button type="primary" onClick={savePage}>Save</Button>
                     <Button type="primary" onClick={moveToPreview}>Preview</Button>
                 </div>

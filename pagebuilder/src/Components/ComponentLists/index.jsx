@@ -19,7 +19,13 @@ export default function ComponentList() {
 function ComponentCards({item}){
     const [{isDragging}, drag] = useDrag(() => ({
         type: item.component,
-        item: item,
+        item: () => {
+            let obj = {
+                ...item,
+            }
+            delete obj["icon"]
+            return obj
+        },
         collect: monitor => ({
           isDragging: !!monitor.isDragging(),
         }),
