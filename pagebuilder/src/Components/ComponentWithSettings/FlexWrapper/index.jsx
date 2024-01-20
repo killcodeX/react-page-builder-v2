@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Slider, Select, Divider, Drawer, Space, Button } from "antd";
+import { Slider, Select, Divider, notification, Drawer, Space, Button } from "antd";
 import { useDispatch } from "react-redux";
 import { addSettingToComponent } from "../../../Redux/Actions/actions";
 
@@ -11,12 +11,20 @@ const gapTypes = {
 };
 
 export default function FlexWrapperSetting({id, title, onClose, openDrawer}) {
+  const [api, contextHolder] = notification.useNotification();
   const dispatch = useDispatch();
   const [disFlex, setDisFlex] = useState("flex")
   const [flexDir, setFlexDir] = useState("row")
   const [justify, setJustify] = useState("flex-start")
   const [align, setAlign] = useState("flex-start")
   const [gap, setGap] = useState("8")
+
+    const openNotificationWithIcon = () => {
+    api["success"]({
+      message: 'Flex Setting successfully added!',
+      // description:'Column Span can only be between 1 to 12',
+    });
+  };
 
 
   return (
@@ -36,6 +44,8 @@ export default function FlexWrapperSetting({id, title, onClose, openDrawer}) {
               gap:gap
             }
             dispatch(addSettingToComponent(id, style))
+            openNotificationWithIcon()
+            onClose()
           }}>
             Save
           </Button>
@@ -43,6 +53,7 @@ export default function FlexWrapperSetting({id, title, onClose, openDrawer}) {
       }
     >
     <div className="component-setting-container">
+    {contextHolder}
     <div className="component-setting-heading">Display Type</div>
     <Select
       defaultValue={disFlex}
