@@ -29,7 +29,7 @@ export default function FlexWrapperSetting({id, title, onClose, openDrawer}) {
           <Button onClick={onClose}>Cancel</Button>
           <Button type="primary" onClick={()=>{
             let style={
-              flex:disFlex,
+              display:disFlex,
               flexDirection:flexDir,
               justifyContent:justify,
               alignItems:align,
