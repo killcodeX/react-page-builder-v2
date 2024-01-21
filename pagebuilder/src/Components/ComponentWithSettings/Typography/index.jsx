@@ -20,17 +20,21 @@ export default function TypographySetting({
   onClose,
   openDrawer,
 }) {
+  let {
+    setting: { style },
+  } = component;
+
   const [api, contextHolder] = notification.useNotification();
   const dispatch = useDispatch();
-  const [label, setLabel] = useState("");
-  const [type, setType] = useState("Normal Text");
-  const [fontSize, setFontSize] = useState("14px");
-  const [fontWeight, setFontWeight] = useState("500");
-  const [color, setColor] = useState("#000");
+  const [label, setLabel] = useState(component.setting.label);
+  const [type, setType] = useState(component.setting.type);
+  const [fontSize, setFontSize] = useState(style.fontSize);
+  const [fontWeight, setFontWeight] = useState(style.fontWeight);
+  const [color, setColor] = useState(style.color);
 
   const openNotificationWithIcon = () => {
     api["success"]({
-      message: "Section Setting successfully added!",
+      message: "Typography Setting successfully added!",
       // description:'Column Span can only be between 1 to 12',
     });
   };
@@ -48,9 +52,9 @@ export default function TypographySetting({
             onClick={() => {
               let setting = {
                 label: label,
+                type: type,
                 style: {
-                  type: type,
-                  fontSize: fontSize,
+                  fontSize: fontSize + "px",
                   fontWeight: fontWeight,
                   color: color,
                 },
@@ -73,8 +77,9 @@ export default function TypographySetting({
           style={{ width: "100%" }}
           onChange={(val) => setType(val)}
           options={[
+            { value: "Page Header", label: "Page Header" },
+            { value: "Normal Header", label: "Normal Header" },
             { value: "Normal Text", label: "Normal Text" },
-            { value: "Heading", label: "Heading" },
             { value: "Description", label: "Description" },
           ]}
         />
@@ -87,7 +92,7 @@ export default function TypographySetting({
               placeholder="Enter your description..."
               type="text"
               value={label}
-              setFontSize={(e) => setLabel(e.target.value)}
+              onChange={(e) => setLabel(e.target.value)}
             />
           </>
         ) : (
@@ -97,7 +102,7 @@ export default function TypographySetting({
               placeholder="Enter your text..."
               type="text"
               value={label}
-              setFontSize={(e) => setLabel(e.target.value)}
+              onChange={(e) => setLabel(e.target.value)}
             />
           </>
         )}
@@ -107,20 +112,20 @@ export default function TypographySetting({
           addonAfter="px"
           type="number"
           value={fontSize}
-          setFontSize={(e) => setFontSize(e.target.value)}
+          onChange={(e) => setFontSize(e.target.value)}
         />
         <Divider />
         <div className="component-setting-heading">Font Weight</div>
         <Input
           type="number"
           value={fontWeight}
-          setFontSize={(e) => setFontWeight(e.target.value)}
+          onChange={(e) => setFontWeight(e.target.value)}
         />
         <Divider />
         <div className="component-setting-heading">Text Color</div>
         <ColorPicker
           value={color}
-          onChange={(e) => setColor(e.target.value)}
+          onChange={(color) => setColor(color.toHexString())}
           showText
         />
         <Divider />

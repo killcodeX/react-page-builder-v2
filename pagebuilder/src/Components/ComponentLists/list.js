@@ -40,9 +40,9 @@ export const components = [
     icon: <CopyOutlined />,
     setting: {
       label: "",
+      type: "Normal Text",
       style: {
-        type: "Normal Text",
-        fontSize: "14px",
+        fontSize: "14",
         fontWeight: "500",
         color: "#000",
       },

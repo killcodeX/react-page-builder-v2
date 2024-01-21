@@ -1,8 +1,20 @@
 import React from "react";
 
 export default function Typography({ data }) {
-  switch (data.type) {
-    case "":
-      return <h2>{data.style.label}</h2>;
+  let {
+    setting: { style },
+  } = data;
+
+  switch (data.setting.type) {
+    case "Page Header":
+      return <h2 style={style}>{data.setting.label}</h2>; //Normal Text
+    case "Normal Header":
+      return <h3 style={style}>{data.setting.label}</h3>;
+    case "Normal Text":
+      return <div style={style}>{data.setting.label}</div>;
+    case "Description":
+      return <p style={style}>{data.setting.label}</p>;
+    default:
+      <label>{data.setting.label}</label>;
   }
 }
