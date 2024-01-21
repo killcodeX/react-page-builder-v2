@@ -17,13 +17,13 @@ export default function ButtonSetting({
   onClose,
   openDrawer,
 }) {
-  let { style } = component;
+  let { setting } = component;
   const [api, contextHolder] = notification.useNotification();
   const dispatch = useDispatch();
-  const [label, setLabel] = useState(style.label);
-  const [type, setType] = useState(style.type);
-  const [icon, setIcon] = useState(style.icon);
-  const [action, setAction] = useState(style.action);
+  const [label, setLabel] = useState(setting.label);
+  const [type, setType] = useState(setting.type);
+  const [icon, setIcon] = useState(setting.icon);
+  const [action, setAction] = useState(setting.action);
 
   const openNotificationWithIcon = () => {
     api["success"]({
@@ -43,13 +43,13 @@ export default function ButtonSetting({
           <Button
             type="primary"
             onClick={() => {
-              let style={
-                label:label,
-                type:type,
-                icon:icon,
-                action:action
-              }
-              dispatch(addSettingToComponent(component.id, style))
+              let setting = {
+                label: label,
+                type: type,
+                icon: icon,
+                action: action,
+              };
+              dispatch(addSettingToComponent(component.id, setting));
               openNotificationWithIcon();
               onClose();
             }}

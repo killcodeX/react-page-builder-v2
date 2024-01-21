@@ -31,21 +31,19 @@ export let findSettingSection = (page, obj) => {
 };
 
 // function add setting to component
-export let AddSettingToComponents = (page, id, style) => {
+export let AddSettingToComponents = (page, id, setting) => {
   return page.map((component) => {
     if (component.id === id) {
-      if (!component["style"]) {
-        console.log(style);
-        component["style"] = style;
+      if (!component["setting"]) {
+        component["setting"] = setting;
       } else {
-        console.log(style);
-        component["style"] = { ...component["style"], ...style };
+        component["setting"] = { ...component["setting"], ...setting };
       }
     } else if (component.components) {
       component.components = AddSettingToComponents(
         component.components,
         id,
-        style
+        setting
       );
     }
     return component;

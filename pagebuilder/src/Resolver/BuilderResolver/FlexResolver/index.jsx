@@ -3,10 +3,12 @@ import { useDrop } from "react-dnd";
 import { useDispatch } from "react-redux";
 import { addComponentToFlex } from "../../../Redux/Actions/actions";
 
-export default function FlexResolver({flexId}) {
+let acceptComponent = ["grid", "flexwrapper", "button", "typography"];
+
+export default function FlexResolver({ flexId }) {
   const dispatch = useDispatch();
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
-    accept: ["grid", "flexwrapper", "button"],
+    accept: acceptComponent,
     drop: (item, monitor) => {
       dispatch(addComponentToFlex(flexId, item));
     },

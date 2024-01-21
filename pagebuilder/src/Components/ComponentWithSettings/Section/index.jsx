@@ -13,9 +13,7 @@ export default function SectionSetting({
 }) {
   const [api, contextHolder] = notification.useNotification();
   const dispatch = useDispatch();
-  const [extraStyle, setExtraStyle] = useState(
-    component.style.extraStyle || null
-  );
+  const [extraStyle, setExtraStyle] = useState(null);
 
   const openNotificationWithIcon = () => {
     api["success"]({
@@ -35,7 +33,9 @@ export default function SectionSetting({
           <Button
             type="primary"
             onClick={() => {
-              dispatch(addSettingToComponent(component.id, { extraStyle }));
+              dispatch(
+                addSettingToComponent(component.id, { style: extraStyle })
+              );
               openNotificationWithIcon();
               onClose();
             }}

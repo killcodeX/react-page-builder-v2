@@ -11,6 +11,7 @@ import {
   Grid,
   FlexWrapper,
   Button,
+  Typography,
 } from "../../Components/ComponentWithSettings";
 import { Flex, Popconfirm } from "antd";
 
@@ -56,7 +57,6 @@ export function Layers(layer) {
                 cancelText="No"
               >
                 <div className="page-builder-component-edit">
-                  ̵
                   <DeleteOutlined />
                 </div>
               </Popconfirm>
@@ -88,12 +88,25 @@ export function Layers(layer) {
         <div className="layer-container" ref={drop}>
           <div className="page-builder-component-card" key={layer.id}>
             <div className="page-builder-component-label">Grid</div>
-            <div
-              className="page-builder-component-edit"
-              onClick={() => setOpenDrawer(true)}
-            >
-              <EditOutlined />
-            </div>
+            <Flex gap={20}>
+              <div
+                className="page-builder-component-edit"
+                onClick={() => setOpenDrawer(true)}
+              >
+                <EditOutlined />
+              </div>
+              <Popconfirm
+                title="Delete the task"
+                description="Are you sure to delete this task?"
+                // onConfirm={confirm}
+                okText="Yes"
+                cancelText="No"
+              >
+                <div className="page-builder-component-edit">
+                  <DeleteOutlined />
+                </div>
+              </Popconfirm>
+            </Flex>
             <Grid
               title="Grid Setting"
               onClose={() => setOpenDrawer(false)}
@@ -111,12 +124,25 @@ export function Layers(layer) {
         <div className="layer-container" ref={drop}>
           <div className="page-builder-component-card" key={layer.id}>
             <div className="page-builder-component-label">Flex Wrapper</div>
-            <div
-              className="page-builder-component-edit"
-              onClick={() => setOpenDrawer(true)}
-            >
-              <EditOutlined />
-            </div>
+            <Flex gap={20}>
+              <div
+                className="page-builder-component-edit"
+                onClick={() => setOpenDrawer(true)}
+              >
+                <EditOutlined />
+              </div>
+              <Popconfirm
+                title="Delete the task"
+                description="Are you sure to delete this task?"
+                // onConfirm={confirm}
+                okText="Yes"
+                cancelText="No"
+              >
+                <div className="page-builder-component-edit">
+                  <DeleteOutlined />
+                </div>
+              </Popconfirm>
+            </Flex>
             <FlexWrapper
               component={layer}
               title="Flex Setting"
@@ -140,15 +166,61 @@ export function Layers(layer) {
         <div className="layer-container">
           <div className="page-builder-component-card" key={layer.id}>
             <div className="page-builder-component-label">Button</div>
-            <div
-              className="page-builder-component-edit"
-              onClick={() => setOpenDrawer(true)}
-            >
-              <EditOutlined />
-            </div>
+            <Flex gap={20}>
+              <div
+                className="page-builder-component-edit"
+                onClick={() => setOpenDrawer(true)}
+              >
+                <EditOutlined />
+              </div>
+              <Popconfirm
+                title="Delete the task"
+                description="Are you sure to delete this task?"
+                // onConfirm={confirm}
+                okText="Yes"
+                cancelText="No"
+              >
+                <div className="page-builder-component-edit">
+                  <DeleteOutlined />
+                </div>
+              </Popconfirm>
+            </Flex>
             <Button
               component={layer}
               title="Flex Setting"
+              onClose={() => setOpenDrawer(false)}
+              openDrawer={openDrawer}
+            />
+          </div>
+        </div>
+      );
+    case "typography":
+      return (
+        <div className="layer-container">
+          <div className="page-builder-component-card" key={layer.id}>
+            <div className="page-builder-component-label">Typography</div>
+            <Flex gap={20}>
+              <div
+                className="page-builder-component-edit"
+                onClick={() => setOpenDrawer(true)}
+              >
+                <EditOutlined />
+              </div>
+              <Popconfirm
+                title="Delete the task"
+                description="Are you sure to delete this task?"
+                // onConfirm={confirm}
+                okText="Yes"
+                cancelText="No"
+              >
+                <div className="page-builder-component-edit">
+                  <DeleteOutlined />
+                </div>
+              </Popconfirm>
+            </Flex>
+            <Typography
+              component={layer}
+              title="Typo Setting"
               onClose={() => setOpenDrawer(false)}
               openDrawer={openDrawer}
             />

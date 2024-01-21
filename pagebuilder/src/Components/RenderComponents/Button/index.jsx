@@ -5,19 +5,22 @@ import { onAction } from "./actions";
 
 export default function ButtonComponent({ data }) {
   const navigate = useNavigate();
-  let { style } = data;
+  let { setting } = data;
 
-  if (style.icon !== null) {
+  if (setting.icon !== null) {
     return (
-      <Button type={style.type} icon={style.icon}>
-        {style.label}
+      <Button type={setting.type} icon={setting.icon}>
+        {setting.label}
       </Button>
     );
   }
 
   return (
-    <Button type={style.type} onClick={() => onAction(style.action, navigate)}>
-      {style.label}
+    <Button
+      type={setting.type}
+      onClick={() => onAction(setting.action, navigate, setting.payload)}
+    >
+      {setting.label}
     </Button>
   );
 }

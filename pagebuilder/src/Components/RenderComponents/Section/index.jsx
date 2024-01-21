@@ -3,16 +3,16 @@ import PageResolver from "../../../Resolver/PageResolver";
 import { cx, css } from "@emotion/css";
 
 export default function Section({ data }) {
-  let { style } = data;
-  let { extraStyle } = style;
-  console.log(extraStyle);
+  let {
+    setting: { style },
+  } = data;
 
   return (
     <section
       className={cx("page-section", {
         [css`
-          ${extraStyle}
-        `]: !!extraStyle,
+          ${style}
+        `]: !!style,
       })}
     >
       {data.components &&
