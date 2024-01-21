@@ -1,11 +1,11 @@
-.page-builder-previewer{
-    margin-top: 4.5rem;
+.page-builder-previewer {
+  margin-top: 4rem;
 }
 
-.page-builder-previewer-empty{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 4.5rem);
-    margin-top: 4.5rem;
+.page-builder-previewer-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 4.5rem);
+  margin-top: 4.5rem;
 }

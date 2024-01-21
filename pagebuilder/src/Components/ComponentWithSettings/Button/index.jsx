@@ -62,10 +62,10 @@ export default function ButtonSetting({
       <div className="component-setting-container">
         {contextHolder}
         <div className="component-setting-heading">Button Label</div>
-        <Input value={label} onChange={(e) => setLabel(e.target.label)} />
+        <Input value={label} onChange={(e) => setLabel(e.target.value)} />
         <Divider />
         <div className="component-setting-heading">Button Icon</div>
-        <Input value={icon} onChange={(e) => setIcon(e.target.label)} />
+        <Input value={icon} onChange={(e) => setIcon(e.target.value)} />
         <Divider />
         <div className="component-setting-heading">Variant/Type</div>
         <Select

@@ -34,13 +34,19 @@ export let findSettingSection = (page, obj) => {
 export let AddSettingToComponents = (page, id, style) => {
   return page.map((component) => {
     if (component.id === id) {
-      if(!component["style"]){
-        component["style"] = style
-      }else{
-        component["style"] = {...component["style"], ...style}
-      } 
+      if (!component["style"]) {
+        console.log(style);
+        component["style"] = style;
+      } else {
+        console.log(style);
+        component["style"] = { ...component["style"], ...style };
+      }
     } else if (component.components) {
-      component.components = AddSettingToComponents(component.components, id, style);
+      component.components = AddSettingToComponents(
+        component.components,
+        id,
+        style
+      );
     }
     return component;
   });

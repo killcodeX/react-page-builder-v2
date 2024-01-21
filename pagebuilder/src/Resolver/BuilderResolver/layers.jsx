@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDrop } from "react-dnd";
 import { useSelector, useDispatch } from "react-redux";
 import { addSection, addGridorFlex } from "../../Redux/Actions/actions";
-import { EditOutlined } from "@ant-design/icons";
+import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import GridResolver from "./gridResolver";
 import FlexResolver from "./FlexResolver";
 import Resolver from "./resolver";
@@ -12,6 +12,7 @@ import {
   FlexWrapper,
   Button,
 } from "../../Components/ComponentWithSettings";
+import { Flex, Popconfirm } from "antd";
 
 const Types = {
   GRID: "grid",
@@ -40,12 +41,26 @@ export function Layers(layer) {
         <div className="layer-container" ref={drop}>
           <div className="page-builder-component-card" key={layer.id}>
             <div className="page-builder-component-label">Section</div>
-            <div
-              className="page-builder-component-edit"
-              onClick={() => setOpenDrawer(true)}
-            >
-              <EditOutlined />
-            </div>
+            <Flex gap={20}>
+              <div
+                className="page-builder-component-edit"
+                onClick={() => setOpenDrawer(true)}
+              >
+                <EditOutlined />
+              </div>
+              <Popconfirm
+                title="Delete the task"
+                description="Are you sure to delete this task?"
+                // onConfirm={confirm}
+                okText="Yes"
+                cancelText="No"
+              >
+                <div className="page-builder-component-edit">
+                  ̵
+                  <DeleteOutlined />
+                </div>
+              </Popconfirm>
+            </Flex>
             <Section
               component={layer}
               title="Flex Setting"
@@ -140,5 +155,7 @@ export function Layers(layer) {
           </div>
         </div>
       );
+    default:
+      return null;
   }
 }

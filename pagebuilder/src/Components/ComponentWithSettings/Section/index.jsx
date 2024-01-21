@@ -13,15 +13,16 @@ export default function SectionSetting({
 }) {
   const [api, contextHolder] = notification.useNotification();
   const dispatch = useDispatch();
-  const [extraStyle, setExtraStyle] = useState(null)
+  const [extraStyle, setExtraStyle] = useState(
+    component.style.extraStyle || null
+  );
 
   const openNotificationWithIcon = () => {
     api["success"]({
-      message: 'Section Setting successfully added!',
+      message: "Section Setting successfully added!",
       // description:'Column Span can only be between 1 to 12',
     });
   };
-
 
   return (
     <Drawer
@@ -31,11 +32,14 @@ export default function SectionSetting({
       extra={
         <Space>
           <Button onClick={onClose}>Cancel</Button>
-          <Button type="primary" onClick={()=>{
-            dispatch(addSettingToComponent(component.id, extraStyle))
-            openNotificationWithIcon()
-            onClose()
-          }}>
+          <Button
+            type="primary"
+            onClick={() => {
+              dispatch(addSettingToComponent(component.id, { extraStyle }));
+              openNotificationWithIcon();
+              onClose();
+            }}
+          >
             Save
           </Button>
         </Space>
@@ -49,7 +53,7 @@ export default function SectionSetting({
             - Add Extra style to your component like padding, margin,
             background-color, etc.
           </span>
-          <span>- Write your vanila css wrapping under {"{}"} bracket!</span>
+          <span>- Write your SASS CSS code</span>
         </div>
         <TextArea
           rows={5}

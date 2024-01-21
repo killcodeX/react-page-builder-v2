@@ -1,4 +1,5 @@
 import React from 'react';
+import { v4 as uuid } from 'uuid';
 import { components } from "./list"
 import "./style.css";
 import { useDrag } from 'react-dnd';
@@ -22,6 +23,7 @@ function ComponentCards({item}){
         item: () => {
             let obj = {
                 ...item,
+                id:uuid(),
             }
             delete obj["icon"]
             return obj
