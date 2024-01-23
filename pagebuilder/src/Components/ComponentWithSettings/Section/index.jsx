@@ -11,9 +11,25 @@ export default function SectionSetting({
   onClose,
   openDrawer,
 }) {
+  let {
+    setting: { style },
+  } = component;
   const [api, contextHolder] = notification.useNotification();
   const dispatch = useDispatch();
-  const [extraStyle, setExtraStyle] = useState(null);
+  const [padding, setPadding] = useState({
+    top: 0,
+    right: 0,
+    bottom: 0,
+    end: 0,
+  });
+  const [margin, setMargin] = useState({
+    top: 0,
+    right: 0,
+    bottom: 0,
+    end: 0,
+  });
+  const [background, setBackground] = useState("#fff");
+  const [extraStyle, setExtraStyle] = useState(style || null);
 
   const openNotificationWithIcon = () => {
     api["success"]({
