@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useDrop } from "react-dnd";
 import { useSelector, useDispatch } from "react-redux";
-import { addSection, addGridorFlex } from "../../Redux/Actions/actions";
+import { addGridorFlex } from "../../Redux/Actions/actions";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
-import GridResolver from "./gridResolver";
 import FlexResolver from "./FlexResolver";
+import GridResolver from "./GridResolver/GridResolver";
 import Resolver from "./resolver";
 import {
   Section,
@@ -22,10 +22,8 @@ const Types = {
 
 export function Layers(layer) {
   const dispatch = useDispatch();
-  const [activeSection, setActiveSection] = useState(null);
-  const [totalColumn, setTotalColumn] = useState({ column: 2 });
   const [openDrawer, setOpenDrawer] = useState(false);
-  const [{ canDrop, isOver, dropTargets }, drop] = useDrop(() => ({
+  const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: ["grid", "flexwrapper"],
     drop: (item, monitor) => {
       dispatch(addGridorFlex(layer.id, item));
@@ -108,15 +106,13 @@ export function Layers(layer) {
               </Popconfirm>
             </Flex>
             <Grid
+              component={layer}
               title="Grid Setting"
               onClose={() => setOpenDrawer(false)}
               openDrawer={openDrawer}
-              gridId={layer.id}
-              totalColumn={totalColumn}
-              setTotalColumn={setTotalColumn}
             />
           </div>
-          <GridResolver gridId={layer.id} totalColumn={totalColumn} />
+          <GridResolver component={layer} />
         </div>
       );
     case "flexwrapper":
