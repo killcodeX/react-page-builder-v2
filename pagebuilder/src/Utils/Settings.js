@@ -49,3 +49,23 @@ export let AddSettingToComponents = (page, id, setting) => {
     return component;
   });
 };
+
+export let addComponentToGridColumn = (page, gridId, columnId, item) => {
+  return page.map((component) => {
+    if (component.id === gridId) {
+      const index = component.columns.findIndex((obj) => obj.id === columnId);
+      component.columns[index] = {
+        ...component.columns[index],
+        component: item,
+      };
+    } else if (component.components) {
+      component.components = addComponentToGridColumn(
+        component.components,
+        gridId,
+        columnId,
+        item
+      );
+    }
+    return component;
+  });
+};

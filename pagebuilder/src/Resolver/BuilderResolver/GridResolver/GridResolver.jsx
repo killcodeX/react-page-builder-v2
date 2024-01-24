@@ -6,7 +6,7 @@ export default function GridResolver({ component }) {
     <>
       {component.columns &&
         component.columns.map((item) => {
-          return <Column key={item.id} column={item} />;
+          return <Column key={item.id} grid={component} column={item} />;
         })}
     </>
   );
