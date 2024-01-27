@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { v4 as uuid } from "uuid";
 import {
   Slider,
   Divider,
@@ -17,44 +18,16 @@ const columnsTypes = {
   6: "6",
 };
 
-export default function GridSetting({
-  totalColumn,
-  setTotalColumn,
-  title,
-  onClose,
-  openDrawer,
-}) {
+export default function GridSetting({ component, title, onClose, openDrawer }) {
   const [api, contextHolder] = notification.useNotification();
-  let [columns, setColumns] = useState([]);
+  let [columns, setColumns] = useState(component.columns.length);
 
-  // const openNotificationWithIcon = () => {
-  //   api["error"]({
-  //     message: 'Column Span Error',
-  //     description:'Column Span can only be between 1 to 12',
-  //   });
-  // };
-
-  // useEffect(() => {
-  //   let col = [];
-  //   for (let i = 0; i < totalColumn.column; i++) {
-  //     col.push(
-  //       <div className="column-span-container">
-  //         <span>Column {i+1}</span>
-  //         <Input type="number" min={1} max={24} onChange={(e) => {
-  //           console.log(e.target.value)
-  //           if(e.target.value && (e.target.value <= 0 || e.target.value > 12)){
-  //             openNotificationWithIcon()
-  //           }
-  //           let obj = {}
-  //           obj["id"]=i+1
-  //           obj["span"]=e.target.value
-  //           setTotalColumn({totalColumn, columnDetails:[...totalColumn?.columnDetails, obj]})
-  //         }}/>
-  //       </div>
-  //     );
-  //   }
-  //   setColumns(col)
-  // }, [totalColumn]);
+  const openNotificationWithIcon = () => {
+    api["error"]({
+      message: "Column Span Error",
+      description: "Column Span can only be between 1 to 12",
+    });
+  };
 
   return (
     <Drawer
@@ -64,7 +37,20 @@ export default function GridSetting({
       extra={
         <Space>
           <Button onClick={onClose}>Cancel</Button>
-          <Button type="primary" onClick={onClose}>
+          <Button
+            type="primary"
+            onClick={() => {
+              let arr = [];
+              for (let i = 0; i < columns; i++) {
+                arr.push({
+                  id: uuid(),
+                  span: 6,
+                  component: null,
+                });
+              }
+              console.log(arr);
+            }}
+          >
             Save
           </Button>
         </Space>
@@ -73,20 +59,14 @@ export default function GridSetting({
       {contextHolder}
       <div className="component-setting-container">
         <div className="component-setting-heading">Number of Columns</div>
-        {/* <Slider
-        min={0}
-        max={12}
-        value={totalColumn.column}
-        onChange={(val) => setTotalColumn({...totalColumn, column:val})}
-        marks={columnsTypes}
-      /> */}
+        <Slider
+          min={0}
+          max={12}
+          value={columns}
+          onChange={(val) => setColumns(val)}
+          marks={columnsTypes}
+        />
         <Divider />
-        {/* <div className="component-setting-heading">Each Columns Span</div>
-      {
-        columns.length > 0 && columns.map((item,index) => {
-            return <React.Fragment key={index}>{item}</React.Fragment>
-        })
-      } */}
       </div>
     </Drawer>
   );

@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Col } from "antd";
 import { useDispatch } from "react-redux";
 import { useDrop } from "react-dnd";
-import PageResolver from "../../PageResolver";
+import Resolver from "../resolver";
 import { addComponentToGridColumn } from "../../../Redux/Actions/actions";
 
-let acceptComponent = ["grid", "flexwrapper", "button", "typography"];
+let acceptComponent = ["button", "typography"];
 
 export default function Column({ grid, column }) {
+  // console.log('hi',column, grid);
   const dispatch = useDispatch();
+
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: acceptComponent,
     drop: (item) => {
@@ -19,13 +22,23 @@ export default function Column({ grid, column }) {
     }),
   }));
 
+  if (!grid && !column.component) {
+    return "loading..";
+  }
+
   if (!column.component) {
     return (
-      <div ref={drop} className="drag-drop-component-container">
-        <span>Drag & Drop a component</span>
-      </div>
+      <Col span={column.span} ref={drop}>
+        <div className="drag-drop-component-grid-container">
+          <span>Drag & Drop a component</span>
+        </div>
+      </Col>
     );
   }
 
-  return <div>column</div>;
+  return (
+    <Col span={column.span}>
+      <Resolver component={column.component} />
+    </Col>
+  );
 }

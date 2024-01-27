@@ -1,100 +1,114 @@
-.builder-resolver{
-    display: flex;
-    flex-direction: column;
-    padding: 32px 64px;
-    /* justify-content: center;
+.builder-resolver {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 64px;
+  /* justify-content: center;
     align-items: center; */
-    min-height: 90vh;
+  min-height: 90vh;
 }
 
-.builder-resolver.empty{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.builder-resolver.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.drag-drop-empty-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 600px;
-    height: 200px;
-    border: 2px dashed #dfdfdf;
-    border-radius: 10px;
+.drag-drop-empty-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height: 200px;
+  border: 2px dashed #dfdfdf;
+  border-radius: 10px;
 }
 
-.page-builder-component-resolver{
-    margin-bottom: 15px;
+.page-builder-component-resolver {
+  margin-bottom: 15px;
 }
 
 /* .layer-container{
     margin-bottom: 8px;
 } */
 
-.page-builder-component-children{
-    margin-left: 20px;
+.page-builder-component-children {
+  margin-left: 20px;
 }
 
 .page-builder-component-card {
-    display:flex;
-    justify-content: space-between;
-    align-items:center;
-    width:400px;
-    height:35px;
-    background:#fff;
-    padding:8px 16px;
-    border-radius: 4px;
-    margin: 15px 0;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03), 0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 400px;
+  height: 35px;
+  background: #fff;
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin: 15px 0;
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03),
+    0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
 }
 
 .page-builder-component-label {
-    font-size:16px;
-    font-weight:600;
+  font-size: 16px;
+  font-weight: 600;
 }
 
-.page-builder-component-edit:hover{
-    cursor: pointer;
+.page-builder-component-edit:hover {
+  cursor: pointer;
 }
 
-.drag-drop-section-container{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:center;
-    gap: 64px;
-    border: 2px dashed #dfdfdf;
-    height: 50px;
-    width: 100%;
-    color: #758490;
-    font-size: 14px;
+.drag-drop-section-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 64px;
+  border: 2px dashed #dfdfdf;
+  height: 50px;
+  width: 100%;
+  color: #758490;
+  font-size: 14px;
 }
 
-.drag-drop-component-container{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:center;
-    gap: 64px;
-    border: 2px dashed #dfdfdf;
-    height:35px;
-    width:405px;
-    color: #758490;
-    font-size: 14px;
-    margin-top: 10px;
-    margin-left: 20px;
+.drag-drop-component-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 64px;
+  border: 2px dashed #dfdfdf;
+  height: 35px;
+  width: 405px;
+  color: #758490;
+  font-size: 14px;
+  margin-top: 10px;
+  margin-left: 20px;
 }
 
 /* grid drop area */
-.drag-drop-grid-container{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items:center;
-    color: #758490;
-    font-size: 14px;
-    margin-top: 10px;
-    border: 2px dashed #dfdfdf;
-    height:35px;
-    width:100%;
+.drag-drop-grid-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #758490;
+  font-size: 14px;
+  margin-top: 10px;
+  border: 2px dashed #dfdfdf;
+  height: 35px;
+  width: 100%;
+}
+
+.drag-drop-component-grid-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #758490;
+  font-size: 14px;
+  margin-top: 10px;
+  border: 2px dashed #dfdfdf;
+  height: 35px;
+  width: 100%;
 }

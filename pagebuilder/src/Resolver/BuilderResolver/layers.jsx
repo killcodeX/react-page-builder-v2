@@ -1,10 +1,10 @@
 import React, { useState } from "react";
+import { Flex, Popconfirm } from "antd";
 import { useDrop } from "react-dnd";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addGridorFlex } from "../../Redux/Actions/actions";
 import { DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import FlexResolver from "./FlexResolver";
-import GridResolver from "./GridResolver/GridResolver";
 import Resolver from "./resolver";
 import {
   Section,
@@ -13,19 +13,15 @@ import {
   Button,
   Typography,
 } from "../../Components/ComponentWithSettings";
-import { Flex, Popconfirm } from "antd";
-
-const Types = {
-  GRID: "grid",
-  FLEX: "flexwrapper",
-};
+import GridResolver from "./GridResolver/index";
 
 export function Layers(layer) {
   const dispatch = useDispatch();
   const [openDrawer, setOpenDrawer] = useState(false);
+
   const [{ canDrop, isOver }, drop] = useDrop(() => ({
     accept: ["grid", "flexwrapper"],
-    drop: (item, monitor) => {
+    drop: (item) => {
       dispatch(addGridorFlex(layer.id, item));
     },
     collect: (monitor) => ({
@@ -37,7 +33,7 @@ export function Layers(layer) {
   switch (layer.component) {
     case "section":
       return (
-        <div className="layer-container" ref={drop}>
+        <div className="layer-container">
           <div className="page-builder-component-card" key={layer.id}>
             <div className="page-builder-component-label">Section</div>
             <Flex gap={20}>
@@ -75,7 +71,7 @@ export function Layers(layer) {
               );
             })}
           {!layer.components && (
-            <div className="drag-drop-component-container">
+            <div ref={drop} className="drag-drop-component-container">
               <span>Drag & Drop Grid or FlexWrapper</span>
             </div>
           )}
@@ -83,7 +79,7 @@ export function Layers(layer) {
       );
     case "grid":
       return (
-        <div className="layer-container" ref={drop}>
+        <div className="layer-container">
           <div className="page-builder-component-card" key={layer.id}>
             <div className="page-builder-component-label">Grid</div>
             <Flex gap={20}>
@@ -117,7 +113,7 @@ export function Layers(layer) {
       );
     case "flexwrapper":
       return (
-        <div className="layer-container" ref={drop}>
+        <div className="layer-container">
           <div className="page-builder-component-card" key={layer.id}>
             <div className="page-builder-component-label">Flex Wrapper</div>
             <Flex gap={20}>
