@@ -28,7 +28,7 @@ export default function Column({ grid, column }) {
 
   if (!column.component) {
     return (
-      <Col span={column.span} ref={drop}>
+      <Col span={column.span * 2} ref={drop}>
         <div className="drag-drop-component-grid-container">
           <span>Drag & Drop a component</span>
         </div>
@@ -37,8 +37,8 @@ export default function Column({ grid, column }) {
   }
 
   return (
-    <Col span={column.span}>
-      <Resolver component={column.component} />
+    <Col span={column.span * 2}>
+      <Resolver component={column.component} insideGrid={true} />
     </Col>
   );
 }

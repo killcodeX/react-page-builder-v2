@@ -15,7 +15,7 @@ import {
 } from "../../Components/ComponentWithSettings";
 import GridResolver from "./GridResolver/index";
 
-export function Layers(layer) {
+export function Layers(layer, insideGrid) {
   const dispatch = useDispatch();
   const [openDrawer, setOpenDrawer] = useState(false);
 
@@ -108,7 +108,9 @@ export function Layers(layer) {
               openDrawer={openDrawer}
             />
           </div>
-          <GridResolver component={layer} />
+          <div className="page-builder-component-children">
+            <GridResolver component={layer} />
+          </div>
         </div>
       );
     case "flexwrapper":
@@ -156,7 +158,12 @@ export function Layers(layer) {
     case "button":
       return (
         <div className="layer-container">
-          <div className="page-builder-component-card" key={layer.id}>
+          <div
+            className={`page-builder-component-card ${
+              insideGrid ? "insideGrid" : null
+            }`}
+            key={layer.id}
+          >
             <div className="page-builder-component-label">Button</div>
             <Flex gap={20}>
               <div
@@ -189,7 +196,12 @@ export function Layers(layer) {
     case "typography":
       return (
         <div className="layer-container">
-          <div className="page-builder-component-card" key={layer.id}>
+          <div
+            className={`page-builder-component-card ${
+              insideGrid ? "insideGrid" : null
+            }`}
+            key={layer.id}
+          >
             <div className="page-builder-component-label">Typography</div>
             <Flex gap={20}>
               <div

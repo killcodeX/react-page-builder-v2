@@ -44,9 +44,13 @@
   background: #fff;
   padding: 8px 16px;
   border-radius: 4px;
-  margin: 15px 0;
+  margin-bottom: 16px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.03),
     0 1px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px 0 rgba(0, 0, 0, 0.02);
+}
+
+.page-builder-component-card.insideGrid {
+  width: auto;
 }
 
 .page-builder-component-label {
@@ -107,8 +111,8 @@
   align-items: center;
   color: #758490;
   font-size: 14px;
-  margin-top: 10px;
   border: 2px dashed #dfdfdf;
   height: 35px;
-  width: 100%;
+  width: auto;
+  padding: 6px 16px;
 }
