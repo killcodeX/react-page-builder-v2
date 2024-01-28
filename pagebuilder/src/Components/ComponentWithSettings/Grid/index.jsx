@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { v4 as uuid } from "uuid";
 import {
+  Flex,
   Slider,
   Divider,
   Input,
@@ -10,6 +12,7 @@ import {
   Button,
 } from "antd";
 import "../style.css";
+import { addColumnToGrid } from "../../../Redux/Actions/actions";
 
 const columnsTypes = {
   2: "2",
@@ -19,13 +22,15 @@ const columnsTypes = {
 };
 
 export default function GridSetting({ component, title, onClose, openDrawer }) {
+  let dispatch = useDispatch();
   const [api, contextHolder] = notification.useNotification();
-  let [columns, setColumns] = useState(component.columns.length);
+  let [noOfcolumns, setNoOfColumns] = useState(component.columns.length);
+  let [columns, setColumns] = useState(component.columns);
 
   const openNotificationWithIcon = () => {
-    api["error"]({
-      message: "Column Span Error",
-      description: "Column Span can only be between 1 to 12",
+    api["success"]({
+      message: "Columns Setting Updated",
+      // description: "Column Span can only be between 1 to 12",
     });
   };
 
@@ -40,15 +45,9 @@ export default function GridSetting({ component, title, onClose, openDrawer }) {
           <Button
             type="primary"
             onClick={() => {
-              let arr = [];
-              for (let i = 0; i < columns; i++) {
-                arr.push({
-                  id: uuid(),
-                  span: 6,
-                  component: null,
-                });
-              }
-              console.log(arr);
+              dispatch(addColumnToGrid(component.id, columns));
+              openNotificationWithIcon();
+              onClose();
             }}
           >
             Save
@@ -62,10 +61,50 @@ export default function GridSetting({ component, title, onClose, openDrawer }) {
         <Slider
           min={0}
           max={12}
-          value={columns}
-          onChange={(val) => setColumns(val)}
+          value={noOfcolumns}
+          onChange={(val) => {
+            let arr = [];
+            for (let i = 0; i < val; i++) {
+              arr.push({
+                id: uuid(),
+                span: 6,
+                component: null,
+              });
+            }
+            setNoOfColumns(val);
+            setColumns(arr);
+          }}
           marks={columnsTypes}
         />
+        <Divider />
+        <div className="component-setting-heading">Column Span</div>
+        {columns.map((item, index) => {
+          const handleSpanChange = (e) => {
+            const updatedColumns = [...columns]; // Clone the columns array
+            updatedColumns[index] = {
+              ...updatedColumns[index],
+              span: e.target.value - "0",
+            }; // Update the span value
+            setColumns(updatedColumns); // Set the state with the updated array
+          };
+
+          return (
+            <Flex
+              style={{ marginBottom: "8px" }}
+              gap={16}
+              align="center"
+              key={item.id}
+            >
+              <span>Column {index + 1}</span>
+              <Input
+                style={{ width: "200px" }}
+                type="number"
+                value={item.span}
+                onChange={handleSpanChange}
+              />
+            </Flex>
+          );
+        })}
         <Divider />
       </div>
     </Drawer>

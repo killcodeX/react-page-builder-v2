@@ -1,6 +1,7 @@
 import {
   AddSections,
   AddGridOrFlex,
+  AddColumnToGrid,
   AddComponentToGridColumn,
   AddComponentToFlex,
   AddSettingToComponent,
@@ -17,6 +18,13 @@ export const addGridorFlex = (sectionId, component) => {
   return {
     type: AddGridOrFlex,
     payload: { sectionId, component },
+  };
+};
+
+export const addColumnToGrid = (gridId, columns) => {
+  return {
+    type: AddColumnToGrid,
+    payload: { gridId, columns },
   };
 };
 

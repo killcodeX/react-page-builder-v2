@@ -1,6 +1,7 @@
 import {
   AddSections,
   AddGridOrFlex,
+  AddColumnToGrid,
   AddComponentToGridColumn,
   AddComponentToFlex,
   AddSettingToComponent,
@@ -9,6 +10,7 @@ import {
   findSection,
   findSettingSection,
   AddSettingToComponents,
+  addColumnToGrid,
   addComponentToGridColumn,
 } from "../../Utils/Settings";
 
@@ -34,6 +36,16 @@ const BuildReducer = (state = initialState, action) => {
       return {
         ...state,
         pageBuilder: res,
+      };
+    case AddColumnToGrid:
+      let grid = addColumnToGrid(
+        state.pageBuilder,
+        action.payload.gridId,
+        action.payload.columns
+      );
+      return {
+        ...state,
+        pageBuilder: grid,
       };
     case AddComponentToGridColumn:
       let page = addComponentToGridColumn(

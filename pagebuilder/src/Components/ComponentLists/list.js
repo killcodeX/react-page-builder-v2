@@ -28,21 +28,6 @@ export const components = [
         span: 6,
         component: null,
       },
-      {
-        id: uuid(),
-        span: 6,
-        component: null,
-      },
-      {
-        id: uuid(),
-        span: 6,
-        component: null,
-      },
-      {
-        id: uuid(),
-        span: 6,
-        component: null,
-      },
     ],
   },
   {

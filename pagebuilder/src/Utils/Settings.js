@@ -50,6 +50,21 @@ export let AddSettingToComponents = (page, id, setting) => {
   });
 };
 
+export let addColumnToGrid = (page, gridId, item) => {
+  return page.map((component) => {
+    if (component.id === gridId) {
+      component.columns = [...item];
+    } else if (component.components) {
+      component.components = addColumnToGrid(
+        component.components,
+        gridId,
+        item
+      );
+    }
+    return component;
+  });
+};
+
 export let addComponentToGridColumn = (page, gridId, columnId, item) => {
   return page.map((component) => {
     if (component.id === gridId) {
