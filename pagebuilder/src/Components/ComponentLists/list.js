@@ -66,7 +66,7 @@ export const components = [
     component: "typography",
     icon: <CopyOutlined />,
     setting: {
-      label: "",
+      label: "Sample Text",
       type: "Normal Text",
       style: {
         fontSize: "14",
