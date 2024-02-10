@@ -1,0 +1,27 @@
+.extra-style-information{
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    padding: 8px 16px;
+    background: rgb(255, 243, 234);
+    color: rgb(255, 131, 43);
+}
+
+/* for grid component */
+.component-setting-heading{
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.column-span-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.column-span-container span{
+    width: 140px;
+}

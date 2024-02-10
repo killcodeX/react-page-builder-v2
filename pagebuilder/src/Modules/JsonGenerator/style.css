@@ -1,0 +1,10 @@
+.generator-builder {
+  margin-top: 4.5rem;
+  padding: 50px 100px;
+}
+
+.generator-builder-heading{
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}

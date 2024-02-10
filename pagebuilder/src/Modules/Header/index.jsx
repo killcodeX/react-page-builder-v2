@@ -1,9 +1,9 @@
 import react from 'react';
 import "./style.css"
-import { Button } from 'antd';
+import { Button, Switch } from 'antd';
 import { useNavigate } from 'react-router-dom';
 
-function Header(){
+function Header({isDarkMode, setIsDarkMode}){
     const navigate = useNavigate();
     const savePage = () =>{
         console.log('savePage')
@@ -15,7 +15,6 @@ function Header(){
         navigate('/');
     }
     const moveToGenerate = () =>{
-        console.log('moveToGenerate')
         navigate('/json-generator');
     }
 
@@ -25,8 +24,9 @@ function Header(){
             <header className='header'>
                 <div className='header-left-side'>Page Builder</div>
                 <div className='right-left-side'>
-                    <Button variant="outlined" onClick={savePage}>Save</Button>
-                    <Button variant="contained" onClick={moveToPreview}>Preview</Button>
+                    {/* <Switch value={isDarkMode} onChange={() => setIsDarkMode(!isDarkMode)} /> */}
+                    <Button type="primary" onClick={savePage}>Save</Button>
+                    <Button type="primary" onClick={moveToPreview}>Preview</Button>
                 </div>
             </header>
         )
@@ -35,8 +35,8 @@ function Header(){
             <header className='header'>
                 <div className='header-left-side'>Page Builder</div>
                 <div className='right-left-side'>
-                    <Button variant="outlined" onClick={backToPage}>Page Builder</Button>
-                   <Button variant="contained" onClick={moveToGenerate}>Generate</Button>
+                    <Button type="primary" onClick={backToPage}>Page Builder</Button>
+                   <Button type="primary" onClick={moveToGenerate}>Generate</Button>
                 </div>
             </header>
         )
@@ -45,7 +45,7 @@ function Header(){
             <header className='header'>
                 <div className='header-left-side'>Page Builder</div>
                 <div className='right-left-side'>
-                    <Button variant="contained" onClick={backToPage}>Page Builder</Button>
+                    <Button type="primary" onClick={backToPage}>Page Builder</Button>
                 </div>
             </header>
         )
