@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 import { Col, Row } from "antd";
-import ReactJson from "react-json-view";
+import ReactJson from "react18-json-view";
 import { useSelector } from "react-redux";
 
 export default function JSONGenerator() {

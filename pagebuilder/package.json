@@ -13,12 +13,11 @@
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
     "react-dom": "^18.2.0",
-    "react-json-view": "^1.21.3",
     "react-redux": "^9.0.4",
     "react-router-dom": "^6.21.2",
     "react-scripts": "5.0.1",
+    "react18-json-view": "^0.2.7",
     "redux": "^5.0.1",
-    "redux-devtools-extension": "^2.13.9",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
